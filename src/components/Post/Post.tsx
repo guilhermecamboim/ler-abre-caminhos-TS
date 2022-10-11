@@ -11,7 +11,8 @@ interface Author {
   avatarUrl: string;
 }
 
-interface Content { 
+interface Content {
+  ref?: string; 
   type: string;
   content: string;
 }
@@ -84,6 +85,11 @@ export function Post({ author, publishedAt, content }: PostProps) {
               <p key={line.content}>{line.content}</p>
               )
           
+          case 'image':
+            return (
+              <img key={line.content} src={`${line.content}`} alt=""/>
+            )
+          
           case 'italic': 
             return (
               <p key={line.content}><em>{line.content}</em></p>
@@ -91,7 +97,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
           
           case 'link':
             return(
-              <p key={line.content}>Conheça o autor: <a href="https://www.instagram.com/jareddiamondofficial/" target="_blank">{line.content}</a></p>
+              <p key={line.content}>Conheça o autor: <a href={`${line.ref}`} target="_blank">{line.content}</a></p>
             )
           }
         })}
