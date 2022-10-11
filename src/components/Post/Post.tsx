@@ -78,19 +78,20 @@ export function Post({ author, publishedAt, content }: PostProps) {
 
       <div className={styles.content}>
         {content.map(line => {
-          if (line.type === 'paragraph') {
+          switch(line.type) {
+          case 'paragraph':
             return (
               <p key={line.content}>{line.content}</p>
-            )
-          }
-          else if (line.type === 'italic') {
+              )
+          
+          case 'italic': 
             return (
               <p key={line.content}><em>{line.content}</em></p>
             )
-          }
-          else if (line.type === 'link') {
+          
+          case 'link':
             return(
-            <p key={line.content}>Conheça o autor: <a href="https://www.instagram.com/jareddiamondofficial/" target="_blank">{line.content}</a></p>
+              <p key={line.content}>Conheça o autor: <a href="https://www.instagram.com/jareddiamondofficial/" target="_blank">{line.content}</a></p>
             )
           }
         })}
