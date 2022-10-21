@@ -4,9 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     display: flex;
-    padding-left: 50px;
     align-items: center;
-    justify-content: center;
     max-width: 100vw;
     height: calc(150vh - 10rem);
     font-family : 'Roboto Mono', monospace;

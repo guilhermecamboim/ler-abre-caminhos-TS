@@ -4,6 +4,7 @@
   background: var(--gray-800);
   padding: 1.25rem 0;
   align-items: center;
+  margin-bottom: 100px;
 
 }
 
@@ -31,4 +32,9 @@ header h1 {
   justify-content: center;
   gap: 20px;
 
+}
+
+a {
+  color: var(--violet-500);
+  text-decoration: none;
 }

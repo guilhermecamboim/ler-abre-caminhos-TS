@@ -10,9 +10,9 @@ export function Header(){
       </NavLink>
         <h1>@LerAbreCaminhos</h1>
       <div className="containerSelection">
-        <a>Sobre</a>
-        <a>Estou lendo</a>
-        <a>Contato</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/estou-lendo">Estou lendo</a>
+        <a href="/contato">Contato</a>
       </div>
     </header>
   )

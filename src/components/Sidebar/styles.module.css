@@ -2,6 +2,7 @@
   background: var(--gray-800);
   border-radius: 8px;
   overflow: hidden;
+  margin-left: 50px;
 }
 
 .cover {
@@ -28,7 +29,7 @@
 
 .profile span {
   font-size: 0.875rem;
-  color: var(--gray-400);
+  color: var(--violet-400);
   line-height: 1.6;
 
 }
@@ -41,8 +42,8 @@
 
 .sidebar footer a {
   background: transparent;
-  color: var(--green-500);
-  border: 1px solid var(--green-500);
+  color: var(--violet-500);
+  border: 1px solid var(--violet-500);
   border-radius: 8px;
   height: 50px;
   padding: 0 1.5rem;
@@ -59,7 +60,7 @@
 }
 
 .sidebar footer a:hover {
-  background: var(--green-500);
+  background: var(--violet-500);
   color: var(--white);
   transition: 300ms;
 }

@@ -8,6 +8,21 @@
   --gray-800: #242020;
   --gray-900: #121214;
 
+  --violet-50: #f5f3ff;
+  --violet-100: #ede9fe;
+  --violet-200: #ddd6fe;
+  --violet-300: #c4b5fd;
+  --violet-400: #a78bfa;
+  --violet-500: #8b5cf6;
+  --violet-600: #7c3aed;
+  --violet-700: #6d28d9;
+  --violet-800: #5b21b6;
+  --violet-900: #4c1d95;
+
+  --indigo-700: #4338ca; 
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
+
   --green-300: #00B37E;
   --green-500: #00875f;
 
@@ -16,7 +31,7 @@
 
 :focus {
   outline: transparent;
-  box-shadow: 0 0 0 2px var(--green-500);
+  box-shadow: 0 0 0 2px var(--violet-900);
 }
 
 * {
