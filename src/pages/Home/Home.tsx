@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { Card } from '../../components/Card';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
+import styles from './styles.module.css'
 
 const posts = [
   {
@@ -11,6 +13,8 @@ const posts = [
       role: 'Autor',
     },
     title: 'Voce sabe o que é amnésia de paisagem?',
+    subtitle: 'Resumo 1',
+    imgCard: 'https://images.unsplash.com/photo-1665474242672-4572ac74ef6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
     content: [
       {type: 'paragraph', content:'Em outras palavras, os danos não ocorreram do dia para noite, mas sim durante décadas. Essas pequenas mudanças na paisagem, que eram rotineiras, tornaram-se quase imperceptíveis ao olhar mais apurado (amnésia de paisagem) até que o Colapso - eternizado por Jared Diamond neste livro - estivesse formado.'},
       {type: 'paragraph', content:'A moral da história? Segundo Rutger Bregman "A moral diz respeito a nós mesmos. Se pusermos a Ilha de Páscoa e o planeta Terra lado a lado, veremos alguns paralelos inquietantes. Vamos considerar: a Ilha de Páscoa é uma manchinha no vasto oceano; a Terra é uma manchinha na imensidão do cosmos. Os ilhéus não tinham barcos para fugir; nós não temos foguetes para nos levar daqui. A Ilha de Páscoa foi desmatada e superpovoada; nosso planeta está ficando poluído e superaquecido".'},
@@ -26,7 +30,9 @@ const posts = [
       name: 'Danielle Souza',
       role: 'Autor',
     },
-    title: 'Post 2',
+    title: 'Voce sabe o que é amnésia de paisagem? 2',
+    subtitle: 'Resumo 2',
+    imgCard: 'https://images.unsplash.com/photo-1665425252293-af1d4696829f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
     content: [
       {type: 'image', content:'https://images.unsplash.com/photo-1665425252293-af1d4696829f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'},
       {type: 'image', content:'https://images.unsplash.com/photo-1665474242672-4572ac74ef6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'},
@@ -44,17 +50,19 @@ const posts = [
 
 export function Home() {
   return (
-    <>
+    <main className={styles.container}>
       <Sidebar/>
-      {posts.map(item => (
-        <>
-        <h1>{item.title}</h1>
-        <img />
-        <NavLink to={`/post/${item.id}`} title="Post">
-          <button style={{width: 40, height: 40, background:"blue"}}/>
-        </NavLink>
-        </>
-      ))}
-    </>
+      <div className={styles.containerCards}>
+        {posts.map(item => (
+          <Card 
+          title={item.title}
+          subtitle={item.subtitle}
+          image={item.imgCard}
+          navLink={item.id}
+          />
+          ))}
+      </div>
+
+    </main>
   )
 }

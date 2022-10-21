@@ -1,0 +1,21 @@
+.container { 
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.containerCards {
+  display: grid;
+  grid-template-areas: 
+  "grid grid";
+  padding-left: 1rem;
+  @media (min-width: 768px) {
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 1001px) {
+    padding: 1rem;
+  }
+}
+

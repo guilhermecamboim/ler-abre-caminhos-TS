@@ -3,6 +3,7 @@ import { DefaultLayout } from './layouts/DefaultLayout'
 import { Home } from './pages/Home/Home'
 import { Posts } from './pages/Posts/Posts'
 import { Suspense } from 'react';
+import { NotFound } from './pages/NotFound';
 
 
 export function Router() {
@@ -12,7 +13,7 @@ export function Router() {
         <Route path="" element={<DefaultLayout />}>
           <Route path="/" element={<Home />}/>
           <Route path="post" element={<Posts />}/>
-          <Route path="*" element={<h1>Page not found</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
