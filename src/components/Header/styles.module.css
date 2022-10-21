@@ -13,12 +13,24 @@
   left: 100px;
   width: 8rem;
   height: 8rem;
+
+}
+
+header img:hover {
+  box-shadow: 0 0 2em purple;
+  border-radius: 50%;
 }
 
 header h1 {
+  color: var(--violet-200);
   position: relative;
   left: 400px;
   font-size: 40px;
+}
+
+header h1:hover {
+  transition: 0.75s;
+  color: var(--violet-600)
 }
 
 .header > div {
@@ -37,4 +49,15 @@ header h1 {
 a {
   color: var(--violet-500);
   text-decoration: none;
+}
+
+a:hover {
+  transition: 0.75s;
+  color: var(--violet-600);
+  text-decoration: none;
+}
+
+.containerImg:focus {
+  outline: transparent;
+  box-shadow: none;
 }
