@@ -61,3 +61,8 @@ a:hover {
   outline: transparent;
   box-shadow: none;
 }
+
+.containerTitle {
+  width: 0;
+  height: 0;
+}

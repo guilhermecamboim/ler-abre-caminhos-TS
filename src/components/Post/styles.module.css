@@ -31,12 +31,12 @@
 
 .content a {
   font-weight: bold;
-  color: var(--green-500);
+  color: var(--violet-500);
   text-decoration: none;
 }
 
 .content a:hover {
-  color: var(--green-300);
+  color: var(--violet-300);
 }
 
 .author {
