@@ -16,19 +16,19 @@
 
 }
 
-header img:hover {
+.header img:hover {
   box-shadow: 0 0 2em purple;
   border-radius: 50%;
 }
 
-header h1 {
+.header h1 {
   color: var(--violet-200);
   position: relative;
   left: 400px;
   font-size: 40px;
 }
 
-header h1:hover {
+.header h1:hover {
   transition: 0.75s;
   color: var(--violet-600)
 }

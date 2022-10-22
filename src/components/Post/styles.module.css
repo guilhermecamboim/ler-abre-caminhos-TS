@@ -90,7 +90,7 @@
   margin-top: 1rem;
   border-radius: 8px;
   border: 0;
-  background: var(--green-500);
+  background: var(--violet-500);
   color: var(--white);
   font-weight: bold;
   cursor: pointer;
@@ -116,7 +116,7 @@
 
 .commentForm button[type="submit"]:not(:disabled):hover {
   transition: 300ms;
-  background: var(--green-300);
+  background: var(--violet-400);
 
 }
 
