@@ -10,7 +10,7 @@ interface IProps {
 
 export function Card({title, subtitle, image, navLink}: IProps) {
   return (
-    <NavLink className={styles.containerCard} to={`post/${navLink}`}>
+    <NavLink className={styles.containerCard} to={`posts/${navLink}`}>
         <img className={styles.imgCard} src={image}/>
         <div className={styles.contentCard}>
           <h1>{title}</h1>
