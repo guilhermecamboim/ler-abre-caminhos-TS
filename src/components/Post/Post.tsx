@@ -4,6 +4,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import { Avatar } from '../Avatar/Avatar'
 import { Comment } from '../Comment/Comment'
 import styles from './styles.module.css'
+import { Carousel } from './components/Carousel'
 
 interface Author {
   name: string;

@@ -21,9 +21,9 @@
 .imgCard {
     margin-top: 10px;
     min-width: 375px;
-    min-height: 350px;
+    min-height: 325px;
     max-width: 375px;
-    max-height: 350px;
+    max-height: 325px;
     border-radius: 4px;
     object-fit: cover;
   }

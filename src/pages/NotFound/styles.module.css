@@ -14,10 +14,10 @@
     position: absolute;
     z-index: 5;
     left: 750px;
-    top: 700px;
+    top: 650px;
     color: purple;
     font-size: 35px;
-    width: 400px;
+    width: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
