@@ -14,3 +14,38 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
+.containerForm button[type="submit"] {
+  padding: 1rem 1.5rem;
+  width: 50%;
+  margin-top: 1rem;
+  border-radius: 8px;
+  border: 0;
+  background: var(--violet-500);
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.containerForm textarea {
+  width: 100%;
+  background: var(--gray-900);
+  border: 0;
+  resize: none;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--gray-400);
+  line-height: 1.6;
+  margin-top: 1rem;
+  border: 2px solid var(--violet-900);
+
+}
+
+.containerForm textarea:focus {
+  border-color: var(--violet-400);
+}
+
+.containerForm textarea::placeholder {
+  color: var(--gray-400);
+}

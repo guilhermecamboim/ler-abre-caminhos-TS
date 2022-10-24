@@ -17,9 +17,6 @@
   cursor: not-allowed;
 }
 
-.textInputContainer:focus {
-}
-
 .prefix {
   font-size: 12px;
 }
