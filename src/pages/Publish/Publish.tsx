@@ -51,6 +51,8 @@ export function Publish() {
     const result = api.post('cadastrar', postPayload)
   }
 
+  
+
 
 
   return (
