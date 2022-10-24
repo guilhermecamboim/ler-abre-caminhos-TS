@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InputText } from "../../components/InputText/InputText";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
+import { api } from "../../lib/axios";
 import styles from './styles.module.css';
 
 export function Publish() {
@@ -11,11 +12,6 @@ export function Publish() {
   const [ thirdParagraph, setThirdParagraph ] = useState<string>('')
   const [ italic, setItalic ] = useState<string>('')
   const [ link, setLink ] = useState<string>('')
-
-  function handleSubmit(event: any) {
-      event?.preventDefault()
-      console.log(event)
-  }
 
   function handleSetTitle(event: any) {
     setTitle(event.target.value)
@@ -40,6 +36,22 @@ export function Publish() {
   function handleSetCreditsAuthor(event: any) {
     setLink(event.target.value)
   }
+
+  function handleSubmit() {
+
+    const postPayload = {
+      title,
+      firstParagraph,
+      secondParagraph,
+      thirdParagraph,
+      italic,
+      link
+    }
+
+    const result = api.post('cadastrar', postPayload)
+  }
+
+
 
   return (
     <div className={styles.wrapper}>
@@ -106,7 +118,7 @@ export function Publish() {
               maxLength={100}
             />
 
-            <button type="submit">Publicar</button>
+            <input type="submit" />
           </div>
         </form>
 
