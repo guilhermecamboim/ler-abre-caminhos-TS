@@ -92,7 +92,7 @@ const posts = [
 
 export function Home() {
   return (
-    <main className={styles.container}>
+    <main className={styles.wrapper}>
       <Sidebar/>
       <div className={styles.containerCards}>
         {posts.map(item => (

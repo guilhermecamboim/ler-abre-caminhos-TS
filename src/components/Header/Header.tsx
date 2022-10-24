@@ -12,8 +12,8 @@ export function Header(){
         <h1>Ler Abre Caminhos</h1>
       </NavLink>
       <div className="containerSelection">
+        <a href="/cadastrar">Cadastrar</a>
         <a href="/sobre">Sobre</a>
-        <a href="/estou-lendo">Estou lendo</a>
         <a href="/contato">Contato</a>
       </div>
     </header>
