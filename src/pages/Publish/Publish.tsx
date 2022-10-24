@@ -8,7 +8,7 @@ export function Publish() {
       <Sidebar />
       <div className={styles.containerForm}>
         <h1>Cadastrar novo Post</h1>
-        <InputText />
+        <InputText name="Teste" placeholder="Teste"/>
         <InputText />
         <InputText />
         <InputText />
