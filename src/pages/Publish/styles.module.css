@@ -29,13 +29,13 @@
 
 .containerForm textarea {
   width: 100%;
-  background: var(--gray-900);
+  background: var(--gray-800);
   border: 0;
   resize: none;
   height: 10rem;
   padding: 1rem;
   border-radius: 8px;
-  color: var(--gray-400);
+  color: var(--white);
   line-height: 1.6;
   margin-top: 1rem;
   border: 2px solid var(--violet-900);

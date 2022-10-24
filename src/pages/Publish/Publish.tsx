@@ -1,12 +1,44 @@
+import { useState } from "react";
 import { InputText } from "../../components/InputText/InputText";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import styles from './styles.module.css';
 
 export function Publish() {
 
+  const [ title, setTitle ] = useState<string>('')
+  const [ firstParagraph, setFirstParagraph ] = useState<string>('')
+  const [ secondParagraph, setSecondParagraph ] = useState<string>('')
+  const [ thirdParagraph, setThirdParagraph ] = useState<string>('')
+  const [ italic, setItalic ] = useState<string>('')
+  const [ link, setLink ] = useState<string>('')
+
   function handleSubmit(event: any) {
       event?.preventDefault()
       console.log(event)
+  }
+
+  function handleSetTitle(event: any) {
+    setTitle(event.target.value)
+  }
+
+  function handleSetFirstParagraph(event: any) {
+    setFirstParagraph(event.target.value)
+  }
+
+  function handleSetSecondParagraph(event: any) {
+    setSecondParagraph(event.target.value)
+  }
+
+  function handleSetThirdParagraph(event: any) {
+    setThirdParagraph(event.target.value)
+  }
+
+  function handleSetImpactFrase(event: any) {
+    setItalic(event.target.value)
+  }
+
+  function handleSetCreditsAuthor(event: any) {
+    setLink(event.target.value)
   }
 
   return (
@@ -18,22 +50,61 @@ export function Publish() {
         <form onSubmit={handleSubmit}>
           <div className={styles.containerForm}>
             <h3>Titulo do Post</h3>
-            <InputText type="text" name="titulo" placeholder="Digite o título do post."/>
+            <InputText 
+              onChange={handleSetTitle}
+              value={title} 
+              type="text" 
+              name="titulo" 
+              placeholder="Digite o título do post."
+              maxLength={50}
+            />
 
             <h3>Primeiro parágrafo</h3>
-            <textarea name="paragraphOne" placeholder="Digite o primeiro parágrafo."/>
+            <textarea 
+              onChange={handleSetFirstParagraph}
+              value={firstParagraph}
+              name="firstParagraph" 
+              placeholder="Digite o primeiro parágrafo."
+              maxLength={500}
+            />
 
             <h3>Segundo parágrafo</h3>
-            <textarea name="paragraphTwo" placeholder="Digite o segundo parágrafo."/>
+            <textarea 
+              onChange={handleSetSecondParagraph}
+              value={secondParagraph}
+              name="secondParagraph" 
+              placeholder="Digite o segundo parágrafo."
+              maxLength={500}
+            />
 
             <h3>Terceiro parágrafo</h3>
-            <textarea name="paragraphThree" placeholder="Digite o terceiro parágrafo."/>
+            <textarea 
+              onChange={handleSetThirdParagraph} 
+              value={thirdParagraph}
+              name="thirdParagraph" 
+              placeholder="Digite o terceiro parágrafo."
+              maxLength={500}
+            />
 
             <h3>Frase de impacto</h3>
-            <InputText type="text" name="italic" placeholder="Digite a frase de impacto"/>
+            <InputText 
+              onChange={handleSetImpactFrase} 
+              value={italic}
+              type="text" 
+              name="italic" 
+              placeholder="Digite a frase de impacto"
+              maxLength={100}
+            />
 
             <h3>Créditos ao autor</h3>
-            <InputText type="text" name="link" placeholder="Digite o link da página do autor"/>
+            <InputText 
+              onChange={handleSetCreditsAuthor}
+              value={link} 
+              type="text" 
+              name="link" 
+              placeholder="Digite o link da página do autor"
+              maxLength={100}
+            />
 
             <button type="submit">Publicar</button>
           </div>
