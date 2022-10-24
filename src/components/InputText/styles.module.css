@@ -1,0 +1,18 @@
+.textInputContainer {
+  background: var(--gray-100);
+  padding: 3rem 4rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 2px solid var(--violet-600);
+  display: flex;
+  align-items: baseline;
+
+}
+
+.textInputContainer:focus {
+  border-color: var(--violet-400)
+}
+
+.input {
+
+}

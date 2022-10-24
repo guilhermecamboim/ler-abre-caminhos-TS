@@ -79,6 +79,9 @@ export function Post({ author, publishedAt, content }: PostProps) {
       </header>
 
       <div className={styles.content}>
+        <div className={styles.containerSlider}>
+          <Carousel />
+        </div>
         {content.map(line => {
           switch(line.type) {
           case 'paragraph':
@@ -98,7 +101,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
           
           case 'link':
             return(
-              <p key={line.content}>Conheça o autor: <a href={`${line.ref}`} target="_blank">{line.content}</a></p>
+              <p key={line.content}>Conheça o autor(a): <a href={`${line.ref}`} target="_blank">{line.content}</a></p>
             )
           }
         })}

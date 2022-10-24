@@ -1,32 +1,36 @@
-
 .containerCarousel {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid pink;
+  place-items: center;
+  height: 37.5rem;
+  width: 37.5rem;
 }
 
-
-  .itemsWrapper{
-    width: 50vw;
-    border: 1px solid purple;
+  .items-wrapper{
+    width: 100%;
   }
 
   
   .items{
     display: flex;
-    border: 1px solid red;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 
   .item{
+    flex: none;
     width: 100%;
-    height: 100%;
-    border: 1px solid blue;
+    height: 400px;
+    scroll-snap-align: start;
   }
   
-  img {
+  .item img {
     width: 100%;
     height: 100%;
-    border: 1px solid green;
+    object-fit: cover;
   }
   

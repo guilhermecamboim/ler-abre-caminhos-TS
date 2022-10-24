@@ -19,12 +19,19 @@
   color: var(--gray-400);
 }
 
+
 .content {
   line-height: 1.6;
   color: var(--gray-300);
   margin-top: 1.5rem;
 }
 
+.containerSlider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 1rem 0;
+}
 .content p {
   margin-top: 1rem;
 }
