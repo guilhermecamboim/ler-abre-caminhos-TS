@@ -18,7 +18,7 @@
 .containerForm input[type="submit"] {
   padding: 1rem 1.5rem;
   width: 50%;
-  margin-top: 1rem;
+  margin-top: 5rem;
   border-radius: 8px;
   border: 0;
   background: var(--violet-500);
@@ -48,4 +48,41 @@
 
 .containerForm textarea::placeholder {
   color: var(--gray-400);
+}
+
+.containerUploadButton {
+  display: flex; 
+  align-items: center;
+  gap: 0.5rem; 
+}
+
+.containerUploadButton button{
+  color: var(--gray-900);
+  border: 2px solid var(--violet-900);
+  background: var(--violet-400);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.containerPreviewUpload {
+  display: grid;
+  grid-template-areas: 
+  "image paragraph";
+  grid-template-columns: 75px auto;
+
+}
+
+.containerPreviewUpload .previewParagraph {
+  grid-area: paragraph;
+  display: flex;
+  align-items: center;
+}
+
+.containerPreviewUpload .previewImage {
+  grid-area: image;
+  display: flex;
+  flex-direction: row;
+  width: 50px; 
+  height: 50px;
+  border-radius: 50%;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { InputText } from "../../components/InputText/InputText";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { api } from "../../lib/axios";
@@ -12,6 +12,8 @@ export function Publish() {
   const [ thirdParagraph, setThirdParagraph ] = useState<string>('')
   const [ italic, setItalic ] = useState<string>('')
   const [ link, setLink ] = useState<string>('')
+  const [files, setFiles] = useState<any>(null);
+  const [nameFile, setNameFile] = useState('');
 
   function handleSetTitle(event: any) {
     setTitle(event.target.value)
@@ -50,6 +52,23 @@ export function Publish() {
 
     const result = api.post('cadastrar', postPayload)
   }
+
+  const fileRef = useRef<HTMLInputElement>(null);
+  
+  const handleClickInput = (event: any) => {
+    event.preventDefault();
+    fileRef.current?.click()
+  };
+
+  const onChangeInputFile = (event: any) => {
+    event.preventDefault();
+    console.log(event.target.files)
+    setFiles(event.target.files)
+    setNameFile(event.target.files[0].name)
+  };
+
+
+  console.log(files)
 
   
 
@@ -120,6 +139,31 @@ export function Publish() {
               maxLength={100}
             />
 
+            <div className={styles.containerUploadButton}>
+              <button
+                onClick={handleClickInput}
+              >
+                Enviar imagens 📷
+              </button>
+              <input
+                type="file"
+                name="files"
+                multiple
+                ref={fileRef}
+                onChange={onChangeInputFile}
+                accept="image/*"
+                hidden  
+              />
+            </div>
+              {files !== null && Array.from(files).map(function(item: any, index: number) {
+                return (
+                    <div className={styles.containerPreviewUpload}>
+                      <p className={styles.previewParagraph}>{item.name} ✅</p>
+                      <img src={URL.createObjectURL(files[index])} alt="" className={styles.previewImage}/>
+                    </div>
+                  )
+                })
+              }
             <input type="submit" />
           </div>
         </form>
