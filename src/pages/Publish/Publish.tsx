@@ -10,10 +10,9 @@ export function Publish() {
   const [ firstParagraph, setFirstParagraph ] = useState<string>('')
   const [ secondParagraph, setSecondParagraph ] = useState<string>('')
   const [ thirdParagraph, setThirdParagraph ] = useState<string>('')
-  const [ italic, setItalic ] = useState<string>('')
-  const [ link, setLink ] = useState<string>('')
+  const [ impactPhrase, setImpactPhrase ] = useState<string>('')
+  const [ authorLink, setAuthorLink ] = useState<string>('')
   const [files, setFiles] = useState<any>(null);
-  const [nameFile, setNameFile] = useState('');
 
   function handleSetTitle(event: any) {
     setTitle(event.target.value)
@@ -32,11 +31,11 @@ export function Publish() {
   }
 
   function handleSetImpactFrase(event: any) {
-    setItalic(event.target.value)
+    setImpactPhrase(event.target.value)
   }
 
   function handleSetCreditsAuthor(event: any) {
-    setLink(event.target.value)
+    setAuthorLink(event.target.value)
   }
 
   function handleSubmit() {
@@ -46,8 +45,8 @@ export function Publish() {
       firstParagraph,
       secondParagraph,
       thirdParagraph,
-      italic,
-      link
+      impactPhrase,
+      authorLink
     }
 
     const result = api.post('cadastrar', postPayload)
@@ -62,16 +61,8 @@ export function Publish() {
 
   const onChangeInputFile = (event: any) => {
     event.preventDefault();
-    console.log(event.target.files)
     setFiles(event.target.files)
-    setNameFile(event.target.files[0].name)
   };
-
-
-  console.log(files)
-
-  
-
 
 
   return (
@@ -122,9 +113,9 @@ export function Publish() {
             <h3>Frase de impacto</h3>
             <InputText 
               onChange={handleSetImpactFrase} 
-              value={italic}
+              value={impactPhrase}
               type="text" 
-              name="italic" 
+              name="impactPhrase" 
               placeholder="Digite a frase de impacto"
               maxLength={100}
             />
@@ -132,7 +123,7 @@ export function Publish() {
             <h3>Créditos ao autor</h3>
             <InputText 
               onChange={handleSetCreditsAuthor}
-              value={link} 
+              value={authorLink} 
               type="text" 
               name="link" 
               placeholder="Digite o link da página do autor"
