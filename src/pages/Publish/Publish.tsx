@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { InputText } from "../../components/InputText/InputText";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { api } from "../../lib/axios";
@@ -12,6 +12,7 @@ export function Publish() {
   const [ thirdParagraph, setThirdParagraph ] = useState<string>('')
   const [ impactPhrase, setImpactPhrase ] = useState<string>('')
   const [ authorLink, setAuthorLink ] = useState<string>('')
+  const [ dataAPI, setDataAPI ] = useState<string>('')
   const [files, setFiles] = useState<any>(null);
 
   function handleSetTitle(event: any) {
@@ -40,16 +41,14 @@ export function Publish() {
 
   function handleSubmit() {
 
-    const postPayload = {
+    const result = api.post('post', {
       title,
       firstParagraph,
       secondParagraph,
       thirdParagraph,
       impactPhrase,
       authorLink
-    }
-
-    const result = api.post('cadastrar', postPayload)
+    })
   }
 
   const fileRef = useRef<HTMLInputElement>(null);
