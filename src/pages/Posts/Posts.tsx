@@ -25,17 +25,12 @@ export function Posts() {
 
     <div className={styles.wrapper}>
       <Sidebar />
-      {dataAPI.title}
-{/*       {dataAPI.map((post: any) => {
-        return (
           <Post
-            key={post.id}
-            author={post.author}
-            content={post.content}
-            publishedAt={post.publishedAt}
+            key={dataAPI.id}
+            //author={dataAPI.author}
+            content={dataAPI}
+            //publishedAt={dataAPI.publishedAt}
           />
-        )
-      })} */}
     </div>
   )
 }

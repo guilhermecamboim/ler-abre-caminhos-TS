@@ -13,14 +13,19 @@ interface Author {
 }
 
 interface Content {
-  ref?: string; 
-  type: string;
-  content: string;
+  id: string | number;	
+  authorLink: string,
+  authorSocialMedia: string,
+  firstParagraph: string,
+  impactPhrase: string,
+  secondParagraph?: string,
+  thirdParagraph?: string,
+  title: string
 }
 
 interface PostProps { 
-  author: Author;
-  publishedAt: Date;
+  author?: Author;
+  publishedAt?: Date;
   content: Content[];
 }
 
@@ -28,7 +33,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
   const [comments, setComments ] = useState(['Post muito bacana, hein?'])
   const [newCommentText, setNewCommentText ] = useState('')
 
-  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+/*   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR
   })
 
@@ -36,7 +41,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
     locale: ptBR,
     addSuffix: true,
   })
-
+ */
   const handleCreateNewComment = (event: FormEvent) => {
     event.preventDefault()
 
@@ -69,42 +74,24 @@ export function Post({ author, publishedAt, content }: PostProps) {
     >
       <header>
         <div className={styles.author}>
-          <Avatar src={author.avatarUrl} />
+{/*           <Avatar src={author.avatarUrl} /> */}
           <div className={styles.authorInfo}>
-            <strong>{author.name}</strong>
-            <span>{author.role}</span>
+{/*             <strong>{author.name}</strong>
+            <span>{author.role}</span> */}
           </div>
         </div>
-        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>{plublishedDateRelativeToNow}</time>
+{/*         <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>{plublishedDateRelativeToNow}</time> */}
       </header>
 
       <div className={styles.content}>
         <div className={styles.containerSlider}>
           <Carousel />
         </div>
-        {content.map(line => {
-          switch(line.type) {
-          case 'paragraph':
-            return (
-              <p key={line.content}>{line.content}</p>
-              )
-          
-          case 'image':
-            return (
-              <img key={line.content} src={`${line.content}`} alt=""/>
-            )
-          
-          case 'italic': 
-            return (
-              <p key={line.content}><em>{line.content}</em></p>
-            )
-          
-          case 'link':
-            return(
-              <p key={line.content}>Conheça o autor(a): <a href={`${line.ref}`} target="_blank">{line.content}</a></p>
-            )
-          }
-        })}
+          <p>{content.firstParagraph}</p>
+          <p>{content.secondParagraph}</p>
+          <p>{content.thirdParagraph}</p>
+          <p><em>{content.impactPhrase}</em></p>
+          <p>Conheça o autor(a): <a href={`${content.authorLink}`} target="_blank">{content.authorSocialMedia}</a></p>
       </div>
 
       <form onSubmit ={handleCreateNewComment} className={styles.commentForm}>

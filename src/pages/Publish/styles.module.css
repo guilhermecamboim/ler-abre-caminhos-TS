@@ -86,3 +86,63 @@
   height: 50px;
   border-radius: 50%;
 }
+
+.textInputContainer {
+  background: var(--gray-800);
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 2px solid var(--violet-900);
+  display: flex;
+  align-items: baseline;
+}
+
+.textInputContainer:has(input:focus) {
+  border-color: var(--violet-400)
+}
+
+.textInputContainer:has(input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prefix {
+  font-size: 12px;
+}
+
+.input {
+  font-size: 1rem;
+  color: var(--white);
+  background: transparent;
+  border: none;
+  width: 100%;
+
+}
+
+.input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+
+}
+
+.input:disabled {
+  cursor: not-allowed;
+
+}
+
+.input::placeholder {
+  color: var(--gray-400);
+
+}
+
+.errorMessage {
+  color: var(--red-500);
+}
+
+/* .popUpSucess {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  position: absolute;
+  display: ${}
+} */

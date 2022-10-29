@@ -1,45 +1,50 @@
-import { useEffect, useRef, useState } from "react";
-import { InputText } from "../../components/InputText/InputText";
-import { Sidebar } from "../../components/Sidebar/Sidebar";
+import { useRef, useState } from "react";
 import { api } from "../../lib/axios";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
+
+import { Sidebar } from "../../components/Sidebar/Sidebar";
 import styles from './styles.module.css';
+
+interface IFormPostProps  {
+  title: string;
+  firstParagraph: string;
+  secondParagraph: string;
+  thirdParagraph: string;
+  impactPhrase: string;
+  authorLink: string;
+  authorSocialMedia: string;
+  FieldValues: any;
+}
 
 export function Publish() {
 
-  const [ title, setTitle ] = useState<string>('')
-  const [ firstParagraph, setFirstParagraph ] = useState<string>('')
-  const [ secondParagraph, setSecondParagraph ] = useState<string>('')
-  const [ thirdParagraph, setThirdParagraph ] = useState<string>('')
-  const [ impactPhrase, setImpactPhrase ] = useState<string>('')
-  const [ authorLink, setAuthorLink ] = useState<string>('')
-  const [ dataAPI, setDataAPI ] = useState<string>('')
   const [files, setFiles] = useState<any>(null);
 
-  function handleSetTitle(event: any) {
-    setTitle(event.target.value)
-  }
+  const newPostFormSchema = zod.object({
+    title: zod.string().min(1, 'Informe um título válido.').max(100, 'O título deve ser inferior a 100 caracteres.'),
+    firstParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(500, 'O parágrafo deve ser inferior a 500 caracteres.'),
+    secondParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(500, 'O título deve ser inferior a 500 caracteres.'),
+    thirdParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(500, 'O título deve ser inferior a 500 caracteres.'),
+    impactPhrase: zod.string().min(1, 'Informe uma frase válida.').max(100, 'A frase deve ser inferior a 100 caracteres.'),
+    authorLink: zod.string().min(1, 'Informe um link válido.').max(300, 'O link deve ser inferior a 300 caracteres.'),
+    authorSocialMedia: zod.string().min(1, 'Informe um @ válido.').max(100, 'O @ deve ser inferior a 100 caracteres.'),
+  })
 
-  function handleSetFirstParagraph(event: any) {
-    setFirstParagraph(event.target.value)
-  }
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: zodResolver(newPostFormSchema)
+  })
 
-  function handleSetSecondParagraph(event: any) {
-    setSecondParagraph(event.target.value)
-  }
+  function handleCreateNewPost(data: IFormPostProps | any) {
 
-  function handleSetThirdParagraph(event: any) {
-    setThirdParagraph(event.target.value)
-  }
-
-  function handleSetImpactFrase(event: any) {
-    setImpactPhrase(event.target.value)
-  }
-
-  function handleSetCreditsAuthor(event: any) {
-    setAuthorLink(event.target.value)
-  }
-
-  function handleSubmit() {
+    const title = data.title
+    const firstParagraph = data.firstParagraph
+    const secondParagraph = data.secondParagraph
+    const thirdParagraph = data.thirdParagraph
+    const impactPhrase = data.impactPhrase
+    const authorLink = data.authorLink
+    const authorSocialMedia = data.authorSocialMedia
 
     const result = api.post('post', {
       title,
@@ -47,9 +52,13 @@ export function Publish() {
       secondParagraph,
       thirdParagraph,
       impactPhrase,
-      authorLink
+      authorLink,
+      authorSocialMedia,
     })
+
+    return result
   }
+  
 
   const fileRef = useRef<HTMLInputElement>(null);
   
@@ -63,71 +72,104 @@ export function Publish() {
     setFiles(event.target.files)
   };
 
-
   return (
     <div className={styles.wrapper}>
       <Sidebar />
       <div className={styles.containerForm}>
         <h1>Cadastrar novo Post</h1>
 
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={handleSubmit(handleCreateNewPost)} action="">
           <div className={styles.containerForm}>
+
             <h3>Titulo do Post</h3>
-            <InputText 
-              onChange={handleSetTitle}
-              value={title} 
-              type="text" 
-              name="titulo" 
-              placeholder="Digite o título do post."
-              maxLength={50}
-            />
+            <div className={styles.textInputContainer}>
+              <input 
+                className={styles.input}
+                placeholder="Digite o título do post."
+                {...register('title')}
+              />
+            </div>
+            <p className={styles.errorMessage} >
+              <>
+                {errors.title?.message}
+              </>
+            </p>
 
             <h3>Primeiro parágrafo</h3>
             <textarea 
-              onChange={handleSetFirstParagraph}
-              value={firstParagraph}
-              name="firstParagraph" 
               placeholder="Digite o primeiro parágrafo."
-              maxLength={500}
+              {...register('firstParagraph')}
             />
+            <p className={styles.errorMessage} >
+              <>
+                {errors.firstParagraph?.message}
+              </>
+            </p>
 
             <h3>Segundo parágrafo</h3>
             <textarea 
-              onChange={handleSetSecondParagraph}
-              value={secondParagraph}
-              name="secondParagraph" 
+              {...register('secondParagraph')}
               placeholder="Digite o segundo parágrafo."
-              maxLength={500}
             />
+            <p className={styles.errorMessage} >
+              <>
+                {errors.secondParagraph?.message}
+              </>
+            </p>
 
             <h3>Terceiro parágrafo</h3>
             <textarea 
-              onChange={handleSetThirdParagraph} 
-              value={thirdParagraph}
-              name="thirdParagraph" 
+              {...register('thirdParagraph')}
               placeholder="Digite o terceiro parágrafo."
-              maxLength={500}
             />
+            <p className={styles.errorMessage} >
+              <>
+                {errors.thirdParagraph?.message}
+              </>
+            </p>
 
             <h3>Frase de impacto</h3>
-            <InputText 
-              onChange={handleSetImpactFrase} 
-              value={impactPhrase}
-              type="text" 
-              name="impactPhrase" 
-              placeholder="Digite a frase de impacto"
-              maxLength={100}
-            />
+            <div className={styles.textInputContainer}>
+              <input 
+                className={styles.input}
+                placeholder="Digite a frase de impacto."
+                {...register('impactPhrase')}
+              />
+            </div>
+            <p className={styles.errorMessage} >
+              <>
+                {errors.impactPhrase?.message}
+              </>
+            </p>
+
+            <h3>Rede social do autor</h3>
+            <div className={styles.textInputContainer}>
+              <input 
+                className={styles.input}
+                placeholder="Digite o @ do usuário do autor"
+                {...register('authorSocialMedia')}
+              />
+            </div>
+            <p className={styles.errorMessage} >
+              <>
+                {errors.authorSocialMedia?.message}
+              </>
+            </p>
 
             <h3>Créditos ao autor</h3>
-            <InputText 
-              onChange={handleSetCreditsAuthor}
-              value={authorLink} 
-              type="text" 
-              name="link" 
-              placeholder="Digite o link da página do autor"
-              maxLength={100}
-            />
+            <div className={styles.textInputContainer}>
+              <input 
+                className={styles.input}
+                placeholder="Digite o link da página do autor"
+                {...register('authorLink')}
+              />
+            </div>
+            <p className={styles.errorMessage} >
+              <>
+                {errors.authorLink?.message}
+              </>
+            </p>
 
             <div className={styles.containerUploadButton}>
               <button
@@ -154,10 +196,13 @@ export function Publish() {
                   )
                 })
               }
-            <input type="submit" />
+            <button type="submit">Enviar</button>
           </div>
         </form>
-
+        
+{/*         <div className={styles.popUpSucess}>
+          <p>Artigo incluído com sucesso</p>
+        </div> */}
       </div>
     </div>
   )
