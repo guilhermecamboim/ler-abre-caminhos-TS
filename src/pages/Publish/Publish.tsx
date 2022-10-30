@@ -5,7 +5,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 
 import { Sidebar } from "../../components/Sidebar/Sidebar";
+import * as S from './styles'
 import styles from './styles.module.css';
+import { X } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
 
 interface IFormPostProps  {
   title: string;
@@ -18,9 +21,10 @@ interface IFormPostProps  {
   FieldValues: any;
 }
 
-export function Publish() {
+export function Publish(props: any) {
 
   const [files, setFiles] = useState<any>(null);
+  const [submitedPost, setSubmitedPost] = useState<any>(false);
 
   const newPostFormSchema = zod.object({
     title: zod.string().min(1, 'Informe um título válido.').max(100, 'O título deve ser inferior a 100 caracteres.'),
@@ -36,6 +40,7 @@ export function Publish() {
     resolver: zodResolver(newPostFormSchema)
   })
 
+  const navigate = useNavigate()
   function handleCreateNewPost(data: IFormPostProps | any) {
 
     const title = data.title
@@ -56,7 +61,13 @@ export function Publish() {
       authorSocialMedia,
     })
 
-    return result
+    setSubmitedPost(true)
+
+    setTimeout(() => {
+      setSubmitedPost(false);
+      navigate("/")
+    }, 2500)
+
   }
   
 
@@ -199,10 +210,10 @@ export function Publish() {
             <button type="submit">Enviar</button>
           </div>
         </form>
-        
-{/*         <div className={styles.popUpSucess}>
+        <S.PopUpSuccess color={submitedPost}>
           <p>Artigo incluído com sucesso</p>
-        </div> */}
+          <X size={18} onClick={() => setSubmitedPost(false)}/>
+        </S.PopUpSuccess>
       </div>
     </div>
   )
