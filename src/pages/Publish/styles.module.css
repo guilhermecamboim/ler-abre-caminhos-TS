@@ -139,3 +139,20 @@
   color: var(--red-500);
 }
 
+button[type='submit'] {
+  margin-top: 50px;
+  font-weight: bold;
+  color: var(--white);
+  border: 2px solid var(--violet-900);
+  background: var(--violet-700);
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 50%;
+}
+
+button[type='submit']:hover {
+  background: var(--violet-500);
+  transition: 1s;
+}
+

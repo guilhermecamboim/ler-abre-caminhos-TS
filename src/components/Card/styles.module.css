@@ -63,7 +63,7 @@
 
 .contentCard p{ 
     font-size: 14px;
-    color: purple;
+    color: var(--violet-600);
   }
 
 .containerCard svg {
@@ -72,6 +72,7 @@
   bottom: 50px; 
   left: 180px;
   z-index: 1;
+  color: var(--violet-600);
 }
 
 .containerCard svg:hover {

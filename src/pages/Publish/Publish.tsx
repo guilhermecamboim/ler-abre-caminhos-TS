@@ -207,7 +207,7 @@ export function Publish(props: any) {
                   )
                 })
               }
-            <button type="submit">Enviar</button>
+            <button type="submit">Publicar Post</button>
           </div>
         </form>
         <S.PopUpSuccess color={submitedPost}>
