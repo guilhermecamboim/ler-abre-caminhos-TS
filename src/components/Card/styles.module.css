@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 0 25px 50px 25px;
 
   width: 400px;
@@ -11,6 +12,7 @@
   border: 1px solid #C55DF6;
 
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 .containerCard:hover {
@@ -19,27 +21,32 @@
 
 
 .imgCard {
-    margin-top: 10px;
-    min-width: 375px;
-    min-height: 325px;
-    max-width: 375px;
-    max-height: 325px;
+    position: relative;
+    bottom: 15%;
+    left: 5%;
+    min-width: 90%;
+    min-height: 100%;
+    max-width: 90%;
+    max-height: 100%;
     border-radius: 4px;
     object-fit: cover;
   }
 
 .contentCard {
-  margin-top: 10px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  bottom: 40px;
+
+  width: 100%;
+  height: 30%;
+
   border-top: 1px solid #C55DF6;
   border-top-left-radius: none;
   border-top-right-radius: none;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  width: 100%;
-  height: 150px !important;
 
   background: rgba( 255, 255, 255, 0.1 );
   backdrop-filter: blur( 10px );
@@ -58,3 +65,16 @@
     font-size: 14px;
     color: purple;
   }
+
+.containerCard svg {
+  position: relative;
+  color: var(--red-500);
+  bottom: 50px; 
+  left: 180px;
+  z-index: 1;
+}
+
+.containerCard svg:hover {
+  color: var(--red-500);
+  cursor: pointer;
+}
