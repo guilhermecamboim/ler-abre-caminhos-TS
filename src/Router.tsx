@@ -5,6 +5,8 @@ import { Posts } from './pages/Posts/Posts'
 import { Suspense } from 'react';
 import { NotFound } from './pages/NotFound';
 import { Publish } from './pages/Publish/Publish';
+import { Contact } from './pages/Contact';
+import { About } from './pages/About';
 
 
 export function Router() {
@@ -16,6 +18,8 @@ export function Router() {
           <Route path="/posts/:postId" element={<Posts />}/>
           <Route path="*" element={<NotFound />} />
           <Route path="/cadastrar" element={<Publish />} />
+          <Route path="/sobre" element={<About />} />
+          <Route path="/contato" element={<Contact />} />
         </Route>
       </Routes>
     </Suspense>
