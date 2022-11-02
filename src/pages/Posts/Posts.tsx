@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Post } from "../../components/Post/Post";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { api } from "../../lib/axios";
-import styles from './styles.module.css';
+import * as S from './styles';
 
 
 
@@ -23,7 +23,7 @@ export function Posts() {
 
   return (
 
-    <div className={styles.wrapper}>
+    <S.Container>
       <Sidebar />
           <Post
             key={dataAPI.id}
@@ -31,6 +31,6 @@ export function Posts() {
             content={dataAPI}
             //publishedAt={dataAPI.publishedAt}
           />
-    </div>
+    </S.Container>
   )
 }

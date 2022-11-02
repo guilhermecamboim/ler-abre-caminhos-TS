@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { api } from '../../lib/axios';
-import styles from './styles.module.css'
+import * as S from './styles'
 
 export function Home() {
 
@@ -19,9 +19,9 @@ useEffect(() => {
 }, [])
 
   return (
-    <main className={styles.wrapper}>
+    <S.Container>
       <Sidebar/>
-      <div className={styles.containerCards}>
+      <S.ContainerCards>
         {Array.from(dataAPI).map((item: any) => (
           <Card 
           title={item.title}
@@ -30,8 +30,8 @@ useEffect(() => {
           navLink={item.id}
           />
           ))}
-      </div>
+      </S.ContainerCards>
 
-    </main>
+    </S.Container>
   )
 }

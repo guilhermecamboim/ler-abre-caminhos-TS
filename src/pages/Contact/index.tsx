@@ -7,6 +7,7 @@ import * as zod from 'zod'
 import * as S from './styles'
 import { X } from "phosphor-react";
 import { api } from '../../lib/axios';
+import { PopUp } from '../../components/PopUp';
 
 
 interface IFormPostProps  {
@@ -101,11 +102,12 @@ export function Contact(){
 
             <button type="submit">Enviar mensagem</button>
         </S.ContainerForm>
-          </form>
-        <S.PopUpSuccess color={submitedPost}>
-          <p>Mensagem enviada com sucesso</p>
-          <X size={18} onClick={() => setSubmitedPost(false)}/>
-        </S.PopUpSuccess>
+        </form>
+        <PopUp 
+          visible={submitedPost} 
+          message="Mensagem enviada com sucesso" 
+          onClickX={() => setSubmitedPost(false)}
+        />
     </S.ContainerAbout>
   )
 }

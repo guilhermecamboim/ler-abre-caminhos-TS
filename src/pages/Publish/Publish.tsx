@@ -9,6 +9,7 @@ import * as S from './styles'
 import styles from './styles.module.css';
 import { X } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
+import { PopUp } from "../../components/PopUp";
 
 interface IFormPostProps  {
   title: string;
@@ -42,24 +43,7 @@ export function Publish(props: any) {
 
   const navigate = useNavigate()
   function handleCreateNewPost(data: IFormPostProps | any) {
-
-    const title = data.title
-    const firstParagraph = data.firstParagraph
-    const secondParagraph = data.secondParagraph
-    const thirdParagraph = data.thirdParagraph
-    const impactPhrase = data.impactPhrase
-    const authorLink = data.authorLink
-    const authorSocialMedia = data.authorSocialMedia
-
-    const result = api.post('post', {
-      title,
-      firstParagraph,
-      secondParagraph,
-      thirdParagraph,
-      impactPhrase,
-      authorLink,
-      authorSocialMedia,
-    })
+    api.post('post', data)
 
     setSubmitedPost(true)
 
@@ -210,10 +194,11 @@ export function Publish(props: any) {
             <button type="submit">Publicar Post</button>
           </div>
         </form>
-        <S.PopUpSuccess color={submitedPost}>
-          <p>Artigo incluído com sucesso</p>
-          <X size={18} onClick={() => setSubmitedPost(false)}/>
-        </S.PopUpSuccess>
+        <PopUp 
+          visible={submitedPost} 
+          message="Artigo incluído com sucesso" 
+          onClickX={() => setSubmitedPost(false)}
+        />
       </div>
     </div>
   )
