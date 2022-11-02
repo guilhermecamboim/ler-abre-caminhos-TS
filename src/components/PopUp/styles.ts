@@ -6,7 +6,7 @@ interface IPopUpProps {
 
 export const PopUpSuccess = styled.div<IPopUpProps>`
   width: 400px;
-  height: 200px;
+  height: 150px;
   
   position: fixed;
   top: 50px;
@@ -15,7 +15,7 @@ export const PopUpSuccess = styled.div<IPopUpProps>`
   border-radius: 8px;
   background: var(--green-300);
   color: var(--gray-900);
-  display: ${(props) => props.visible ? 'flex' : 'none'};
+  display: ${({visible}) => visible ? 'flex' : 'none'};
   justify-content: center;
   align-items: center;
 

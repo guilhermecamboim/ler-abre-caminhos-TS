@@ -3,18 +3,23 @@ import { useState } from "react";
 import { PopUpSuccess } from "./styles";
 
 interface IPropsPopUp {
-  message?: string;
-  onClickX: any;
-  visible: any;
+  message: string;
+  open: boolean;
 }
 
-export function PopUp({message, onClickX, visible}: IPropsPopUp){
+export function PopUp({message, open}: IPropsPopUp){
 
   return (
-    <PopUpSuccess visible={visible}>
+    <>
+    {open ? 
+      <PopUpSuccess visible={open}>
       <p>{message}</p>
-      <X size={18} onClick={() => {onClickX}}/>
-    </PopUpSuccess>
+      <X size={18}/>
+      </PopUpSuccess>
+      :
+      <></>
+    }
+    </>
 
   )
 }

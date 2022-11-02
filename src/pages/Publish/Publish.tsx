@@ -7,7 +7,6 @@ import * as zod from 'zod'
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import * as S from './styles'
 import styles from './styles.module.css';
-import { X } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import { PopUp } from "../../components/PopUp";
 
@@ -195,9 +194,8 @@ export function Publish(props: any) {
           </div>
         </form>
         <PopUp 
-          visible={submitedPost} 
-          message="Artigo incluído com sucesso" 
-          onClickX={() => setSubmitedPost(false)}
+          message="Artigo incluído com sucesso"
+          open={submitedPost}
         />
       </div>
     </div>

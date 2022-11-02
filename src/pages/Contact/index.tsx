@@ -104,9 +104,7 @@ export function Contact(){
         </S.ContainerForm>
         </form>
         <PopUp 
-          visible={submitedPost} 
           message="Mensagem enviada com sucesso" 
-          onClickX={() => setSubmitedPost(false)}
         />
     </S.ContainerAbout>
   )
