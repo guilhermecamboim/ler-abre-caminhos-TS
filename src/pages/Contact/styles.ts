@@ -5,8 +5,9 @@ export const ContainerAbout = styled.div `
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 82rem;
+  width: calc(100%-8rem);
   height: 40rem;
+  margin-left: 8rem;
 `
 
 export const Title = styled.h2 `
