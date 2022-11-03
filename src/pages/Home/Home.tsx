@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Card } from '../../components/Card';
+import { Input } from '../../components/Input';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { api } from '../../lib/axios';
 import * as S from './styles'
