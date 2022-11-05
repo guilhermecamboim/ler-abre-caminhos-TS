@@ -21,6 +21,7 @@ interface Content {
   secondParagraph?: string,
   thirdParagraph?: string,
   title: string
+  fileUrl: string;
 }
 
 interface PostProps { 
@@ -85,7 +86,8 @@ export function Post({ author, publishedAt, content }: PostProps) {
 
       <div className={styles.content}>
         <div className={styles.containerSlider}>
-          <Carousel />
+          {/* <Carousel fileUrl={content.file?.fileUrl}/> */}
+          <img className={styles.imageTest} src={content.file?.fileUrl} />
         </div>
           <p>{content.firstParagraph}</p>
           <p>{content.secondParagraph}</p>

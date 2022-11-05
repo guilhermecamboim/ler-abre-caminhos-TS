@@ -22,12 +22,11 @@
 
 .imgCard {
     position: relative;
-    bottom: 15%;
-    left: 5%;
-    min-width: 90%;
-    min-height: 95%;
-    max-width: 90%;
-    max-height: 95%;
+    bottom: 5%;
+    min-width: 350px;
+    min-height: 300px;
+    max-width: 350px;
+    max-height: 300px;
     border-radius: 4px;
     object-fit: cover;
   }
@@ -84,4 +83,9 @@
 .containerCard svg:hover {
   color: var(--red-500);
   cursor: pointer;
+}
+
+.containerCard svg {
+  position: relative;
+  bottom: 20px;
 }

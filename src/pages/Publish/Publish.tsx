@@ -28,10 +28,10 @@ export function Publish(props: any) {
 
   const newPostFormSchema = zod.object({
     title: zod.string().min(1, 'Informe um título válido.').max(100, 'O título deve ser inferior a 100 caracteres.'),
-    firstParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(500, 'O parágrafo deve ser inferior a 500 caracteres.'),
-    secondParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(500, 'O título deve ser inferior a 500 caracteres.'),
-    thirdParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(500, 'O título deve ser inferior a 500 caracteres.'),
-    impactPhrase: zod.string().min(1, 'Informe uma frase válida.').max(100, 'A frase deve ser inferior a 100 caracteres.'),
+    firstParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(600, 'O parágrafo deve ser inferior a 500 caracteres.'),
+    secondParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(600, 'O título deve ser inferior a 500 caracteres.'),
+    thirdParagraph: zod.string().min(1, 'Informe um parágrafo válido.').max(600, 'O título deve ser inferior a 500 caracteres.'),
+    impactPhrase: zod.string().min(1, 'Informe uma frase válida.').max(200, 'A frase deve ser inferior a 100 caracteres.'),
     authorLink: zod.string().min(1, 'Informe um link válido.').max(300, 'O link deve ser inferior a 300 caracteres.'),
     authorSocialMedia: zod.string().min(1, 'Informe um @ válido.').max(100, 'O @ deve ser inferior a 100 caracteres.'),
   })
@@ -41,8 +41,41 @@ export function Publish(props: any) {
   })
 
   const navigate = useNavigate()
-  function handleCreateNewPost(data: IFormPostProps | any) {
-    api.post('post', data)
+  const handleCreateNewPost = async (data: IFormPostProps | any) => {
+
+    let fileId
+
+    if (files) {
+      const formData = new FormData();
+      formData.append("file", files);
+      const resultUpload = await api({
+        method: "post",
+        url: "file-upload",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      fileId = resultUpload.data;
+    }
+
+    const title = data.title
+    const firstParagraph = data.firstParagraph
+    const secondParagraph = data.secondParagraph
+    const thirdParagraph = data.thirdParagraph
+    const impactPhrase = data.impactPhrase
+    const authorLink = data.authorLink
+    const authorSocialMedia = data.authorSocialMedia
+    const file = fileId
+    
+    await api.post('post', {
+      title,
+      firstParagraph,
+      secondParagraph,
+      thirdParagraph,
+      impactPhrase,
+      authorLink,
+      authorSocialMedia,
+      file
+    })
 
     setSubmitedPost(true)
 
@@ -63,7 +96,10 @@ export function Publish(props: any) {
 
   const onChangeInputFile = (event: any) => {
     event.preventDefault();
-    setFiles(event.target.files)
+    //setFiles(event.target.files)
+    if (event.target.files.length !== 0) { 
+      setFiles(event.target.files[0])
+    }
   };
 
   return (
@@ -174,14 +210,13 @@ export function Publish(props: any) {
               <input
                 type="file"
                 name="files"
-                multiple
                 ref={fileRef}
                 onChange={onChangeInputFile}
                 accept="image/*"
                 hidden  
               />
             </div>
-              {files !== null && Array.from(files).map(function(item: any, index: number) {
+{/*               {files !== null && Array.from(files).map(function(item: any, index: number) {
                 return (
                     <div className={styles.containerPreviewUpload}>
                       <p className={styles.previewParagraph}>{item.name} ✅</p>
@@ -189,7 +224,15 @@ export function Publish(props: any) {
                     </div>
                   )
                 })
+              } */}
+              {files !== null && 
+                    <div className={styles.containerPreviewUpload}>
+                      <p className={styles.previewParagraph}>{files.name} ✅</p>
+                      <img src={URL.createObjectURL(files)} alt="" className={styles.previewImage}/>
+                    </div>
+                  
               }
+
             <button type="submit">Publicar Post</button>
           </div>
         </form>
