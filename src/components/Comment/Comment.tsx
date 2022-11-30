@@ -30,7 +30,7 @@ export function Comment({content, onDeleteComment}:CommentProps) {
           <header>
             <div className={styles.authorAndTime}>
               <strong>Guilherme Camboim</strong>
-              <time title="11 de Maio de 2022 às 11:00" dateTime="2022-06-21 11:00">Cerca de 1h atrás</time>
+              <time title="11 de Maio de 2022 às 11:00" dateTime="2022-06-21 11:00">Instantes atrás</time>
             </div>
 
             <button onClick={handleDeleteComment} title="Deletar comentário">

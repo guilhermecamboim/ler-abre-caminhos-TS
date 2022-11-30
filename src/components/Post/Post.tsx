@@ -31,7 +31,7 @@ interface PostProps {
 }
 
 export function Post({ author, publishedAt, content }: PostProps) {
-  const [comments, setComments ] = useState(['Post muito bacana, hein?'])
+  const [comments, setComments ] = useState<string[]>([])
   const [newCommentText, setNewCommentText ] = useState('')
 
 /*   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
@@ -85,6 +85,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
       </header>
 
       <div className={styles.content}>
+          <h1 style={{display: "flex", justifyContent: "center"}}>{content.title}</h1>
         <div className={styles.containerSlider}>
           {/* <Carousel fileUrl={content.file?.fileUrl}/> */}
           <img className={styles.imageTest} src={content.file?.fileUrl} />

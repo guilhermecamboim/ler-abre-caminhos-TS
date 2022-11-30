@@ -4,7 +4,7 @@ import { PopUpSuccess } from "./styles";
 
 interface IPropsPopUp {
   message: string;
-  open: boolean;
+  open?: boolean;
 }
 
 export function PopUp({message, open}: IPropsPopUp){
