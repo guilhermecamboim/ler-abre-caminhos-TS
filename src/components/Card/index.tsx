@@ -1,7 +1,6 @@
 import { Trash } from 'phosphor-react';
 import { NavLink } from 'react-router-dom';
 import { api } from '../../lib/axios';
-import styles from './styles.module.css';
 import * as S from './styles'
 
 interface IProps {
@@ -23,8 +22,8 @@ export function Card({title, subtitle, image, navLink, date}: IProps) {
 
   return (
     <S.ContainerCard>
-      <Trash size={24} className={styles.trashButton} onClick={handleDeletePost}/>
-      <NavLink className={styles.containerLink} to={`posts/${navLink}`}>
+      <Trash size={24} className="trashButton" onClick={handleDeletePost}/>
+      <NavLink className="containerLink" to={`posts/${navLink}`}>
         <S.ImageCard src={image}/>
         <S.ContentCard>
           <h1>{title}</h1>
