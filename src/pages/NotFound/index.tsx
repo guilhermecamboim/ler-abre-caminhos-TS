@@ -1,4 +1,3 @@
-import { Carousel } from '../../components/Post/components/Carousel';
 import styles from './styles.module.css';
 
 export function NotFound() {

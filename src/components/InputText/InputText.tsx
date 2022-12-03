@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from 'react';
-import styles from './styles.module.css';
+import * as S from './styles'
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>  {
   prefix?: string;
@@ -7,9 +7,9 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>  {
 
 export function InputText({ prefix, ...props }: TextInputProps) { 
   return (
-    <div className={styles.textInputContainer}>
-      {!!prefix && <span className={styles.prefix}>{prefix}</span>}
-      <input {...props} className={styles.input}/>
-    </div>
+    <S.TextInputContainer>
+      {!!prefix && <S.Prefix>{prefix}</S.Prefix>}
+      <input {...props}/>
+    </S.TextInputContainer>
   )
 }
